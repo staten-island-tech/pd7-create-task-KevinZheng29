@@ -8,52 +8,35 @@ const DOM = {
   historyresult: document.getElementById("historyresult"),
 };
 
-const resulthistory = [];
-let joker = 0;
-let notjoker = 0;
+const history = [
+  {
+    win: 0,
+  },
+  {
+    lost: 0,
+  },
+];
 
-function generaterandomnumber() {
-  let x = Math.floor(Math.random() * 2) + 1;
-  let y = Math.floor(Math.random() * 2) + 1;
-
-  if (x === 1) {
-    y = 2;
-  } else if (x === 2) {
-    y = 1;
-  }
-  DOM.card1 = x;
-  DOM.card2 = y;
+let x = Math.floor(Math.random() * 2) + 1;
+let y = Math.floor(Math.random() * 2) + 1;
+while (x === y) {
+  x = Math.floor(Math.random() * 2) + 1;
 }
+
+function generatenumber(number1, number2) {
+  DOM.card1 = number1;
+  DOM.card2 = number2;
+  console.log(DOM.card1);
+  console.log(DOM.card2);
+}
+
+generatenumber(x, y);
 
 function result() {
   if (DOM.card1 === 1) {
-    DOM.page.innerHTML = "You got joker! You lost!";
-    resulthistory.push("joker");
-  } else if (DOM.card1 === 2) {
-    DOM.page.innerHTML = "It wasn't a joker. You are safe!";
-    resulthistory.push("notjoker");
-  }
-  if (DOM.card2 === 1) {
-    DOM.page.innerHTML = "You got joker! You lost!";
-    resulthistory.push("joker");
-  } else if (DOM.card2 === 2) {
-    DOM.page.innerHTML = "It wasn't a joker. You are safe!";
-    resulthistory.push("notjoker");
+    console.log("u got joker");
+  } else {
+    console.log("u win");
   }
 }
-
-DOM.card1.addEventListener("click", function () {
-  generaterandomnumber();
-  result();
-  console.log(DOM.card1);
-});
-
-DOM.card2.addEventListener("click", function () {
-  generaterandomnumber();
-  result();
-  console.log(DOM.card2);
-});
-
-DOM.historybtn.addEventListener("click", function () {
-  DOM.historyresult.innerHTML = `${resulthistory}`;
-});
+result();
