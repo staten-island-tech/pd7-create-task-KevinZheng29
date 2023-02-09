@@ -9,14 +9,7 @@ const DOM = {
   historyresult: document.getElementById("historyresult"),
 };
 
-const history = [
-  {
-    win: 0,
-  },
-  {
-    lost: 0,
-  },
-];
+const history = [];
 
 let card1number;
 let card2number;
