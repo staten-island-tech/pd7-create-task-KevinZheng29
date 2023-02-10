@@ -9,7 +9,19 @@ const DOM = {
   historyresult: document.getElementById("historyresult"),
 };
 
-const history = [];
+const history = [
+  {
+    lost: 0,
+    win: 0,
+  },
+];
+
+function addlost() {
+  history.forEach((history) => history.lost++);
+}
+function addwin() {
+  history.forEach((history) => history.win++);
+}
 
 let card1number;
 let card2number;
@@ -31,9 +43,6 @@ function generatenumber(number1, number2, number3) {
   card1number = number1;
   card2number = number2;
   card3number = number3;
-  console.log(card1number);
-  console.log(card2number);
-  console.log(card3number);
 }
 
 generatenumber(a, b, c);
@@ -41,25 +50,23 @@ generatenumber(a, b, c);
 DOM.card1.addEventListener("click", function () {
   if (card1number === jokernumber) {
     DOM.page.innerHTML = "You got joker. You lose!";
-    history.push("Lose");
+    addlost();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
     DOM.page.innerHTML = "You didn't get the joker. You win!";
-    history.push("Win");
+    addwin();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   }
 });
 
-console.log(history);
-
 DOM.card2.addEventListener("click", function () {
   if (card2number === jokernumber) {
     DOM.page.innerHTML = "You got joker. You lose!";
-    history.push("Lose");
+    addlost();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
     DOM.page.innerHTML = "You didn't get the joker. You win!";
-    history.push("Win");
+    addwin();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   }
 });
@@ -67,15 +74,17 @@ DOM.card2.addEventListener("click", function () {
 DOM.card3.addEventListener("click", function () {
   if (card3number === jokernumber) {
     DOM.page.innerHTML = "You got joker. You lose!";
-    history.push("Lose");
+    addlost();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
     DOM.page.innerHTML = "You didn't get the joker. You win!";
-    history.push("Win");
+    addwin();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   }
 });
 
 historybtn.addEventListener("click", function () {
-  historyresult.innerHTML = history;
+  history.forEach((history) => {
+    DOM.innerHTML = `Win: ${history.win} Lost: ${history.lost}`;
+  });
 });
