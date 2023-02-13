@@ -85,6 +85,8 @@ DOM.card3.addEventListener("click", function () {
 
 historybtn.addEventListener("click", function () {
   history.forEach((history) => {
-    DOM.innerHTML = `Win: ${history.win} Lost: ${history.lost}`;
+    DOM.historyresult.innerHTML = `
+    <div> Win: ${history.win}</div> 
+    </div> Lost: ${history.lost}</div>`;
   });
 });

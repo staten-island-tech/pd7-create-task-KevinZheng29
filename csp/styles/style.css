@@ -10,3 +10,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+#historybtn{
+    size: 20px;
+    background-color: white;
+}
