@@ -52,10 +52,13 @@ generatenumber(a, b, c);
 
 DOM.card1.addEventListener("click", function () {
   if (card1number === jokernumber) {
+    DOM.page.innerHTML = "";
     DOM.cardpage.innerHTML = `
+    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
     <div class="resultsentence">You got the joker!</div>
     <button class="playagain">Play Again</button>
     `;
+    startagain();
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
@@ -65,10 +68,12 @@ DOM.card1.addEventListener("click", function () {
     if (cardleft === 2) {
       DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
     } else {
+      DOM.page.innerHTML = "";
       DOM.cardpage.innerHTML = `
       <div class="resultsentence">All cards you chose was not the joker. You win!</div>
       <button class="playagain">Play Again</button>
       `;
+      startagain();
       addwin();
       seehistory();
     }
@@ -77,10 +82,13 @@ DOM.card1.addEventListener("click", function () {
 
 DOM.card2.addEventListener("click", function () {
   if (card2number === jokernumber) {
+    DOM.page.innerHTML = "";
     DOM.cardpage.innerHTML = `
+    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
     <div class="resultsentence">You got the joker!</div>
     <button class="playagain">Play Again</button>
     `;
+    startagain();
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
@@ -90,11 +98,12 @@ DOM.card2.addEventListener("click", function () {
     if (cardleft === 2) {
       DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
     } else {
+      DOM.page.innerHTML = "";
       DOM.cardpage.innerHTML = `
       <div class="resultsentence">All cards you chose was not the joker. You win!</div>
       <button class="playagain">Play Again</button>
       `;
-
+      startagain();
       addwin();
       seehistory();
     }
@@ -103,10 +112,13 @@ DOM.card2.addEventListener("click", function () {
 
 DOM.card3.addEventListener("click", function () {
   if (card3number === jokernumber) {
+    DOM.page.innerHTML = "";
     DOM.cardpage.innerHTML = `
+    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
     <div class="resultsentence">You got the joker!</div>
     <button class="playagain">Play Again</button>
     `;
+    startagain();
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
@@ -116,12 +128,14 @@ DOM.card3.addEventListener("click", function () {
     if (cardleft === 2) {
       DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
     } else {
+      DOM.page.innerHTML = "";
       DOM.cardpage.innerHTML = `
       <div class="resultsentence">All cards you chose was not the joker. You win!</div>
       <button class="playagain">Play Again</button>
       `;
       addwin();
       seehistory();
+      startagain();
     }
   }
 });
@@ -135,3 +149,8 @@ function seehistory() {
 }
 
 seehistory();
+
+function startagain() {
+  let playagain = document.querySelector(".playagain");
+  playagain.addEventListener("click", function () {});
+}
