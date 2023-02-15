@@ -4,6 +4,7 @@ const DOM = {
   card1: document.getElementById("Card1"),
   card2: document.getElementById("Card2"),
   card3: document.getElementById("Card3"),
+  cardpage: document.getElementById("cardpage"),
   page: document.getElementById("resultpage"),
   historybtn: document.getElementById("historybtn"),
   historyresult: document.getElementById("historyresult"),
@@ -27,6 +28,8 @@ let card1number;
 let card2number;
 let card3number;
 
+let cardleft = 3;
+
 let jokernumber = Math.floor(Math.random() * 3) + 1;
 
 let a = Math.floor(Math.random() * 3) + 1;
@@ -49,43 +52,77 @@ generatenumber(a, b, c);
 
 DOM.card1.addEventListener("click", function () {
   if (card1number === jokernumber) {
-    DOM.page.innerHTML = `<div class="resultsentence">You got joker. You lose!</div>`;
+    DOM.cardpage.innerHTML = `
+    <div class="resultsentence">You got the joker!</div>
+    <button class="playagain">Play Again</button>
+    `;
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
-    DOM.page.innerHTML = `<div class="resultsentence">You didn't get the joker. You win!</div>`;
-    addwin();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
-    seehistory();
+    this.remove();
+    cardleft = cardleft - 1;
+    if (cardleft === 2) {
+      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+    } else {
+      DOM.cardpage.innerHTML = `
+      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+      <button class="playagain">Play Again</button>
+      `;
+      addwin();
+      seehistory();
+    }
   }
 });
 
 DOM.card2.addEventListener("click", function () {
   if (card2number === jokernumber) {
-    DOM.page.innerHTML = `<div class="resultsentence">You got joker. You lose!</div>`;
+    DOM.cardpage.innerHTML = `
+    <div class="resultsentence">You got the joker!</div>
+    <button class="playagain">Play Again</button>
+    `;
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
-    DOM.page.innerHTML = `<div class="resultsentence">You didn't get the joker. You win!</div>`;
-    addwin();
-    seehistory();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
+    this.remove();
+    cardleft = cardleft - 1;
+    if (cardleft === 2) {
+      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+    } else {
+      DOM.cardpage.innerHTML = `
+      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+      <button class="playagain">Play Again</button>
+      `;
+
+      addwin();
+      seehistory();
+    }
   }
 });
 
 DOM.card3.addEventListener("click", function () {
   if (card3number === jokernumber) {
-    DOM.page.innerHTML = `<div class="resultsentence">You got joker. You lose!</div>`;
+    DOM.cardpage.innerHTML = `
+    <div class="resultsentence">You got the joker!</div>
+    <button class="playagain">Play Again</button>
+    `;
     addlost();
     seehistory();
     jokernumber = Math.floor(Math.random() * 3) + 1;
   } else {
-    DOM.page.innerHTML = `<div class="resultsentence">You didn't get the joker. You win!</div>`;
-    addwin();
-    seehistory();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
+    this.remove();
+    cardleft = cardleft - 1;
+    if (cardleft === 2) {
+      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+    } else {
+      DOM.cardpage.innerHTML = `
+      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+      <button class="playagain">Play Again</button>
+      `;
+      addwin();
+      seehistory();
+    }
   }
 });
 
