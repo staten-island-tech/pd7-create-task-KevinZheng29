@@ -1,14 +1,117 @@
 import "../styles/style.css";
 
 const DOM = {
-  card1: document.getElementById("Card1"),
-  card2: document.getElementById("Card2"),
-  card3: document.getElementById("Card3"),
+  start: document.getElementById("startbtn"),
   cardpage: document.getElementById("cardpage"),
   page: document.getElementById("resultpage"),
   historybtn: document.getElementById("historybtn"),
   historyresult: document.getElementById("historyresult"),
 };
+
+DOM.start.addEventListener("click", function () {
+  this.remove();
+  displaycard();
+  let cards = displaycard();
+  generatenumber(a, b, c);
+  cards.card1.addEventListener("click", function () {
+    if (card1number === jokernumber) {
+      DOM.page.innerHTML = "";
+      DOM.cardpage.innerHTML = `
+      <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
+      <div class="resultsentence">You got the joker!</div>
+      <button class="playagain">Play Again</button>
+      `;
+      startagain();
+      addlost();
+      seehistory();
+      jokernumber = Math.floor(Math.random() * 3) + 1;
+    } else {
+      this.remove();
+      cardleft = cardleft - 1;
+      if (cardleft === 2) {
+        DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+      } else {
+        DOM.page.innerHTML = "";
+        DOM.cardpage.innerHTML = `
+        <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+        <button class="playagain">Play Again</button>
+        `;
+        addwin();
+        seehistory();
+      }
+    }
+  });
+  cards.card2.addEventListener("click", function () {
+    if (card2number === jokernumber) {
+      DOM.page.innerHTML = "";
+      DOM.cardpage.innerHTML = `
+      <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
+      <div class="resultsentence">You got the joker!</div>
+      <button class="playagain">Play Again</button>
+      `;
+      startagain();
+      addlost();
+      seehistory();
+      jokernumber = Math.floor(Math.random() * 3) + 1;
+    } else {
+      this.remove();
+      cardleft = cardleft - 1;
+      if (cardleft === 2) {
+        DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+      } else {
+        DOM.page.innerHTML = "";
+        DOM.cardpage.innerHTML = `
+        <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+        <button class="playagain">Play Again</button>
+        `;
+        addwin();
+        seehistory();
+      }
+    }
+  });
+  cards.card3.addEventListener("click", function () {
+    if (card3number === jokernumber) {
+      DOM.page.innerHTML = "";
+      DOM.cardpage.innerHTML = `
+      <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
+      <div class="resultsentence">You got the joker!</div>
+      <button class="playagain">Play Again</button>
+      `;
+      startagain();
+      addlost();
+      seehistory();
+      jokernumber = Math.floor(Math.random() * 3) + 1;
+    } else {
+      this.remove();
+      cardleft = cardleft - 1;
+      if (cardleft === 2) {
+        DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
+      } else {
+        DOM.page.innerHTML = "";
+        DOM.cardpage.innerHTML = `
+        <div class="resultsentence">All cards you chose was not the joker. You win!</div>
+        <button class="playagain">Play Again</button>
+        `;
+        addwin();
+        seehistory();
+      }
+    }
+  });
+  rebtn();
+});
+function displaycard() {
+  DOM.cardpage.innerHTML = `
+<img id="Card1" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+
+<img id="Card2" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+
+<img id="Card3" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+`;
+  let card1 = document.getElementById("Card1");
+  let card2 = document.getElementById("Card2");
+  let card3 = document.getElementById("Card3");
+  return { card1, card2, card3 };
+}
 
 const history = [
   {
@@ -48,98 +151,6 @@ function generatenumber(number1, number2, number3) {
   card3number = number3;
 }
 
-generatenumber(a, b, c);
-
-DOM.card1.addEventListener("click", function () {
-  if (card1number === jokernumber) {
-    DOM.page.innerHTML = "";
-    DOM.cardpage.innerHTML = `
-    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
-    <div class="resultsentence">You got the joker!</div>
-    <button class="playagain">Play Again</button>
-    `;
-    startagain();
-    addlost();
-    seehistory();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
-  } else {
-    this.remove();
-    cardleft = cardleft - 1;
-    if (cardleft === 2) {
-      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
-    } else {
-      DOM.page.innerHTML = "";
-      DOM.cardpage.innerHTML = `
-      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
-      <button class="playagain">Play Again</button>
-      `;
-      startagain();
-      addwin();
-      seehistory();
-    }
-  }
-});
-
-DOM.card2.addEventListener("click", function () {
-  if (card2number === jokernumber) {
-    DOM.page.innerHTML = "";
-    DOM.cardpage.innerHTML = `
-    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
-    <div class="resultsentence">You got the joker!</div>
-    <button class="playagain">Play Again</button>
-    `;
-    startagain();
-    addlost();
-    seehistory();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
-  } else {
-    this.remove();
-    cardleft = cardleft - 1;
-    if (cardleft === 2) {
-      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
-    } else {
-      DOM.page.innerHTML = "";
-      DOM.cardpage.innerHTML = `
-      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
-      <button class="playagain">Play Again</button>
-      `;
-      startagain();
-      addwin();
-      seehistory();
-    }
-  }
-});
-
-DOM.card3.addEventListener("click", function () {
-  if (card3number === jokernumber) {
-    DOM.page.innerHTML = "";
-    DOM.cardpage.innerHTML = `
-    <img class="img" src="https://th.bing.com/th/id/R.4cd75e78c5aacd5368b1f89b5f560e8a?rik=YkM41%2bvIuBE66g&pid=ImgRaw&r=0"><img>
-    <div class="resultsentence">You got the joker!</div>
-    <button class="playagain">Play Again</button>
-    `;
-    startagain();
-    addlost();
-    seehistory();
-    jokernumber = Math.floor(Math.random() * 3) + 1;
-  } else {
-    this.remove();
-    cardleft = cardleft - 1;
-    if (cardleft === 2) {
-      DOM.page.innerHTML = `<div class="resultsentence">This card wasn't the joker. Choose one more card!</div>`;
-    } else {
-      DOM.page.innerHTML = "";
-      DOM.cardpage.innerHTML = `
-      <div class="resultsentence">All cards you chose was not the joker. You win!</div>
-      <button class="playagain">Play Again</button>
-      `;
-      addwin();
-      seehistory();
-      startagain();
-    }
-  }
-});
-
 function seehistory() {
   history.forEach((history) => {
     DOM.historyresult.innerHTML = `
@@ -150,7 +161,7 @@ function seehistory() {
 
 seehistory();
 
-function startagain() {
+function rebtn() {
   let playagain = document.querySelector(".playagain");
-  playagain.addEventListener("click", function () {});
+  return playagain;
 }
