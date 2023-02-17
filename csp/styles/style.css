@@ -1,7 +1,16 @@
 .card, .img{
-    width: 300px;
-    height: 500px;
+    width:  200px;
+    height: 350px;
     margin-top: 50px;
+}
+
+.img2{
+    width: 300px;
+    height: 300px;
+}
+
+.startbtn{
+    font-size: 40px;
 }
 
 .parent{
@@ -11,12 +20,15 @@
     justify-content: space-evenly;
 }
 
+.history{
+    margin-top: 200px;
+}
 
 .resultsentence{
-    font-size: 50px;
+    font-size: 30px;
 }
 .playagain{
-    width: 200px;
-    height: 200px;
-    font-size: 50px;
+    height: 70px;
+    width: 70px;
+    font-size: 20px;
 }
