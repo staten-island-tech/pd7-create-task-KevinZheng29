@@ -20,6 +20,10 @@
     justify-content: space-evenly;
 }
 
+.border{
+    border: solid 3px black;
+}
+
 .history{
     margin-top: 200px;
 }

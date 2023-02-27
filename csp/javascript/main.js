@@ -1,17 +1,25 @@
 import "../styles/style.css";
 
-const history = [
+const cards = [
   {
-    lost: 0,
-    win: 0,
+    Number: 1,
+  },
+  {
+    Number: 2,
+  },
+  {
+    Number: 3,
   },
 ];
 
+let win = 0;
+let lost = 0;
+
 function addlost() {
-  history.forEach((history) => history.lost++);
+  lost++;
 }
 function addwin() {
-  history.forEach((history) => history.win++);
+  win++;
 }
 
 const DOM = {
@@ -32,26 +40,6 @@ function game() {
   gamesystem();
 }
 
-function displaycard() {
-  DOM.cardpage.innerHTML = `
-<img id="Card1" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
-
-<img id="Card2" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
-
-<img id="Card3" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
-`;
-  let card1 = document.getElementById("Card1");
-  let card2 = document.getElementById("Card2");
-  let card3 = document.getElementById("Card3");
-  return { card1, card2, card3 };
-}
-
-let card1number;
-let card2number;
-let card3number;
-
-let cardleft = 3;
-
 let a = Math.floor(Math.random() * 3) + 1;
 let b = Math.floor(Math.random() * 3) + 1;
 let c = Math.floor(Math.random() * 3) + 1;
@@ -61,6 +49,12 @@ while (a === b || a === c) {
 while (b === c || b === a) {
   b = Math.floor(Math.random() * 3) + 1;
 }
+
+let cardleft = 3;
+
+let card1number;
+let card2number;
+let card3number;
 
 function generatenumber(number1, number2, number3) {
   card1number = number1;
@@ -164,12 +158,24 @@ function gamesystem() {
   });
 }
 
+function displaycard() {
+  DOM.cardpage.innerHTML = `
+<img id="Card${cards[0].Number}" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+
+<img id="Card${cards[1].Number}" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+
+<img id="Card${cards[2].Number}" class="card" src="https://opengameart.org/sites/default/files/card%20back%20red.png"><img>
+`;
+  let card1 = document.getElementById("Card1");
+  let card2 = document.getElementById("Card2");
+  let card3 = document.getElementById("Card3");
+  return { card1, card2, card3 };
+}
+
 function seehistory() {
-  history.forEach((history) => {
-    DOM.historyresult.innerHTML = `
-    <div> Win: ${history.win}</div> 
-    </div> Lost: ${history.lost}</div>`;
-  });
+  DOM.historyresult.innerHTML = `
+    <div> Win: ${win}</div> 
+    </div> Lost: ${lost}</div>`;
 }
 
 seehistory();
