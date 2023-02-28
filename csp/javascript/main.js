@@ -12,13 +12,18 @@ const cards = [
   },
 ];
 
+const history = [];
+console.log(history);
+
 let win = 0;
 let lost = 0;
 
 function addlost() {
+  history.push("lost");
   lost++;
 }
 function addwin() {
+  history.push("win");
   win++;
 }
 

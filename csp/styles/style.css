@@ -1,3 +1,7 @@
+.direction{
+    font-size: 20px;
+}
+
 .card, .img{
     width:  200px;
     height: 350px;
