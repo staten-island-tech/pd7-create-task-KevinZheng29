@@ -1,5 +1,14 @@
 import "../styles/style.css";
 
+const DOM = {
+  start: document.getElementById("startbtn"),
+  cardpage: document.getElementById("cardpage"),
+  page: document.getElementById("resultpage"),
+  historybtn: document.getElementById("historybtn"),
+  historyresult: document.getElementById("historyresult"),
+  historyorder: document.getElementById("order"),
+};
+
 const cards = [
   {
     Number: 1,
@@ -13,7 +22,6 @@ const cards = [
 ];
 
 const history = [];
-console.log(history);
 
 let win = 0;
 let lost = 0;
@@ -21,19 +29,23 @@ let lost = 0;
 function addlost() {
   history.push("lost");
   lost++;
+  DOM.historyresult.innerHTML = `
+    <div> Win: ${win}</div> 
+    </div> Lost: ${lost}</div>`;
+  updatehistoryorder();
 }
 function addwin() {
   history.push("win");
   win++;
+  DOM.historyresult.innerHTML = `
+    <div> Win: ${win}</div> 
+    </div> Lost: ${lost}</div>`;
+  updatehistoryorder();
 }
 
-const DOM = {
-  start: document.getElementById("startbtn"),
-  cardpage: document.getElementById("cardpage"),
-  page: document.getElementById("resultpage"),
-  historybtn: document.getElementById("historybtn"),
-  historyresult: document.getElementById("historyresult"),
-};
+function updatehistoryorder() {
+  DOM.historyorder.innerHTML = `${history}`;
+}
 
 DOM.start.addEventListener("click", function () {
   this.remove();
@@ -81,7 +93,6 @@ function gamesystem() {
       `;
       restartbtn();
       addlost();
-      seehistory();
       jokernumber = Math.floor(Math.random() * 3) + 1;
     } else {
       this.remove();
@@ -97,7 +108,6 @@ function gamesystem() {
         `;
         restartbtn();
         addwin();
-        seehistory();
       }
     }
   });
@@ -111,7 +121,6 @@ function gamesystem() {
       `;
       restartbtn();
       addlost();
-      seehistory();
       jokernumber = Math.floor(Math.random() * 3) + 1;
     } else {
       this.remove();
@@ -127,7 +136,6 @@ function gamesystem() {
         `;
         restartbtn();
         addwin();
-        seehistory();
       }
     }
   });
@@ -141,7 +149,6 @@ function gamesystem() {
       `;
       restartbtn();
       addlost();
-      seehistory();
       jokernumber = Math.floor(Math.random() * 3) + 1;
     } else {
       this.remove();
@@ -157,7 +164,6 @@ function gamesystem() {
         `;
         restartbtn();
         addwin();
-        seehistory();
       }
     }
   });
@@ -176,14 +182,6 @@ function displaycard() {
   let card3 = document.getElementById("Card3");
   return { card1, card2, card3 };
 }
-
-function seehistory() {
-  DOM.historyresult.innerHTML = `
-    <div> Win: ${win}</div> 
-    </div> Lost: ${lost}</div>`;
-}
-
-seehistory();
 
 function restartbtn() {
   let reset = document.querySelector(".playagain");
