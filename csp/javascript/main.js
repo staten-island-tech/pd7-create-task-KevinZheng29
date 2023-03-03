@@ -52,9 +52,11 @@ DOM.start.addEventListener("click", function () {
   game();
 });
 
+let randomnumber = Math.floor(Math.random() * 3) + 1;
+
 function game() {
   generatenumber(a, b, c);
-  gamesystem();
+  gamesystem(randomnumber);
 }
 
 let a = Math.floor(Math.random() * 3) + 1;
@@ -79,8 +81,7 @@ function generatenumber(number1, number2, number3) {
   card3number = number3;
 }
 
-function gamesystem() {
-  let jokernumber = Math.floor(Math.random() * 3) + 1;
+function gamesystem(jokernumber) {
   displaycard();
   let cards = displaycard();
   cards.card1.addEventListener("click", function () {
